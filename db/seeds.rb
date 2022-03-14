@@ -12,7 +12,10 @@ def create_users
     puts 'Creating users...'
     5.times do
       User.create!(
-        { email: Faker::Internet.unique.email, password: Faker::Internet.password }
+        {
+          email: Faker::Internet.unique.email,
+          password: Faker::Internet.password
+        }
       )
     end
     puts '✅ Users created'
@@ -26,8 +29,10 @@ def create_posts
     puts 'Creating blog posts...'
     20.times do
       Post.create!(
-        { user_id: User.find(User.pluck(:id).sample).id,
+        {
+          user_id: User.find(User.pluck(:id).sample).id,
           title: Faker::Lorem.sentence,
+          summary: Faker::Lorem.paragraphs(number: 1),
           body: Faker::Lorem.paragraphs(number: 4)
         }
       )

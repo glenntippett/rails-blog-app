@@ -1,5 +1,5 @@
 <% @posts.each do |post| %>
   <h2><%= post.title %></h2>
   <span><%= post.user.email %></span>
-  <p><%= post.body %></p>
+  <p><%= post.summary %></p>
 <% end %>
