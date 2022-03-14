@@ -1,7 +1,45 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+def clean_db
+  puts 'Cleaning DB:'
+  puts '1. Destroying Users...'
+  User.destroy_all
+  puts '2. Destroying Posts...'
+  Post.destroy_all
+  puts 'Finished cleaning DB'
+end
+
+def create_users
+  begin
+    puts 'Creating users...'
+    5.times do
+      User.create!(
+        { email: Faker::Internet.unique.email, password: Faker::Internet.password }
+      )
+    end
+    puts '✅ Users created'
+  rescue => e
+    puts "❌ Error creating users: #{e}"
+  end
+end
+
+def create_posts
+  begin
+    puts 'Creating blog posts...'
+    20.times do
+      Post.create!(
+        { user_id: User.find(User.pluck(:id).sample).id,
+          title: Faker::Lorem.sentence,
+          body: Faker::Lorem.paragraphs(number: 4)
+        }
+      )
+    end
+    puts '✅ Posts created'
+  rescue => e
+    puts "❌ Error creating posts: #{e}"
+  end
+end
+
+clean_db()
+create_users()
+create_posts()
+
+puts 'All done'
