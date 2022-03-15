@@ -5,11 +5,10 @@ class PagesController < ApplicationController
 
   def search
     if params[:query].present?
-      # @posts = Post.where(title: params[:query])
       @posts = Post.where("title ILIKE ?", "%#{params[:query]}%")
+      @posts = ['No search results found'] if @posts.size.zero?
     else
-      # @posts = Movie.all
-      @posts = Post.all
+      @posts = ['No search query']
     end
   end
 end

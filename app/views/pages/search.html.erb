@@ -1,5 +1,9 @@
 <h1>Search page</h1>
 
 <% @posts.each do |post| %>
-  <p><%= post.title %></p>
+  <% if post.class == String %>
+    <p><%= post %></p> <!-- This returns if there are no search results found -->
+  <% else %>
+    <p><%= post.title %></p>
+  <% end %>
 <% end %>
