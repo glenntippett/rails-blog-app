@@ -7,6 +7,15 @@ def clean_db
   puts 'Finished cleaning DB'
 end
 
+def create_test_user
+  User.create!(
+    {
+      email: 'test@test.com',
+      password: 'password123'
+    }
+  )
+end
+
 def create_users
   begin
     puts 'Creating users...'
@@ -18,9 +27,22 @@ def create_users
         }
       )
     end
+    create_test_user()
     puts '✅ Users created'
   rescue => e
     puts "❌ Error creating users: #{e}"
+  end
+end
+
+def create_test_user_posts
+  5.times do Post.create!(
+      {
+        user_id:User.find_by_email!('test@test.com').id,
+        title: Faker::Lorem.sentence,
+        summary: Faker::Lorem.paragraphs(number: 1),
+        body: Faker::Lorem.paragraphs(number: 4)
+      }
+    )
   end
 end
 
@@ -37,6 +59,7 @@ def create_posts
         }
       )
     end
+    create_test_user_posts()
     puts '✅ Posts created'
   rescue => e
     puts "❌ Error creating posts: #{e}"
