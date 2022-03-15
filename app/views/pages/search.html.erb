@@ -4,6 +4,8 @@
   <% if post.class == String %>
     <p><%= post %></p> <!-- This returns if there are no search results found -->
   <% else %>
-    <p><%= post.title %></p>
+    <h3><%= link_to post.title, post_path(post) %></h3>
+    <p><%= post.user.username %></p>
+    <p><%= post.summary %></p>
   <% end %>
 <% end %>
