@@ -10,6 +10,7 @@ end
 def create_test_user
   User.create!(
     {
+      username: 'test',
       email: 'test@test.com',
       password: 'password123'
     }
@@ -22,6 +23,7 @@ def create_users
     5.times do
       User.create!(
         {
+          username: Faker::Internet.unique.username,
           email: Faker::Internet.unique.email,
           password: Faker::Internet.password
         }
@@ -38,8 +40,8 @@ def create_test_user_posts
   5.times do Post.create!(
       {
         user_id:User.find_by_email!('test@test.com').id,
-        title: Faker::Lorem.sentence,
-        summary: Faker::Lorem.paragraphs(number: 1),
+        title: Faker::Movies::StarWars.quote,
+        summary: Faker::TvShows::MichaelScott.quote,
         body: Faker::Lorem.paragraphs(number: 4)
       }
     )
@@ -53,8 +55,8 @@ def create_posts
       Post.create!(
         {
           user_id: User.find(User.pluck(:id).sample).id,
-          title: Faker::Lorem.sentence,
-          summary: Faker::Lorem.paragraphs(number: 1),
+          title: Faker::Movies::StarWars.quote,
+          summary: Faker::TvShows::MichaelScott.quote,
           body: Faker::Lorem.paragraphs(number: 4)
         }
       )
