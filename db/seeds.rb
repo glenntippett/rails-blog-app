@@ -42,7 +42,7 @@ def create_test_user_posts
         user_id:User.find_by_email!('test@test.com').id,
         title: Faker::Movies::StarWars.quote,
         summary: Faker::TvShows::MichaelScott.quote,
-        body: Faker::Lorem.paragraphs(number: 4)
+        body: Faker::Markdown.sandwich(sentences: 5)
       }
     )
   end
@@ -57,7 +57,7 @@ def create_posts
           user_id: User.find(User.pluck(:id).sample).id,
           title: Faker::Movies::StarWars.quote,
           summary: Faker::TvShows::MichaelScott.quote,
-          body: Faker::Lorem.paragraphs(number: 4)
+          body: Faker::Markdown.sandwich(sentences: 5)
         }
       )
     end
