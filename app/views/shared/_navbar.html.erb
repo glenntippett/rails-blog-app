@@ -1,7 +1,9 @@
 <nav>
   <ul>
     <li><%= link_to "Home", root_path %></li>
-    <li>About</li>
+    <li>
+      <%= render 'shared/search' %>
+    </li>
     <li><%= link_to "Profile", profile_path  %></li>
   </ul>
 </nav>
