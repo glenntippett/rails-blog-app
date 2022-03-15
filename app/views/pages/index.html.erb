@@ -1,5 +1,5 @@
 <% @posts.each do |post| %>
-  <h2><%= post.title %></h2>
-  <span><%= post.user.username %></span>
+  <h3><%= link_to post.title, post_path(post) %></h3>
+  <p><%= post.user.username %></p>
   <p><%= post.summary %></p>
 <% end %>
