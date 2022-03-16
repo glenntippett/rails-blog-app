@@ -15,11 +15,18 @@ class PostsController < ApplicationController
     @post.user_id = @user.id
 
     @post.save
+    redirect_to profile_path
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to profile_path
   end
 
   private
 
   def post_params
-  params.require(:post).permit(:title, :rich_body)
-end
+    params.require(:post).permit(:title, :rich_body)
+  end
 end

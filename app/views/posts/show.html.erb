@@ -1,2 +1,10 @@
+<!-- TODO: Replace test with current user -->
+<% if @post.user.email == 'test@test.com' %>
+  <%= link_to "Delete Post",
+              post_path(@post),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+<% end %>
+
 <h1><%= @post.title %></h1>
 <%= @post.rich_body %>
