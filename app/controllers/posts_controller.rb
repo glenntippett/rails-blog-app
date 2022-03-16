@@ -5,6 +5,21 @@ class PostsController < ApplicationController
   end
 
   def new
-    # ...
+    @post = Post.new
   end
+
+  def create
+    @post = Post.new(post_params)
+    # TODO: Replace finding user with the current user logged in
+    @user = User.find_by_email('test@test.com')
+    @post.user_id = @user.id
+
+    @post.save
+  end
+
+  private
+
+  def post_params
+  params.require(:post).permit(:title, :rich_body)
+end
 end

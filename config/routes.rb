@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   get 'profile', to: 'users#show'
   get 'search', to: 'pages#search'
 
-  resources :posts, only: [:show, :new]
+  resources :posts, only: [:show, :new, :create]
 end
