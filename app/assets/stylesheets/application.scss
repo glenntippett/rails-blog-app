@@ -1,6 +1,12 @@
-@import "bootstrap/scss/bootstrap";
-@import 'trix/dist/trix';
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
 
-@import './pages/index.scss';
-@import './config/index.scss';
-@import './components/index.scss';
+// External libraries
+@import "bootstrap/scss/bootstrap";
+@import "font-awesome";
+
+// Your CSS partials
+@import "components/index";
+@import "pages/index";

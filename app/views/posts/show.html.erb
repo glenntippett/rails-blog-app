@@ -1,5 +1,4 @@
-<!-- TODO: Replace test with current user -->
-<% if @post.user.email == 'test@test.com' %>
+<% if @post.user == current_user %>
   <%= link_to "Delete Post",
               post_path(@post),
               method: :delete,
@@ -7,4 +6,7 @@
 <% end %>
 
 <h1><%= @post.title %></h1>
+<p>
+  Written by: <%= @post.user.email %>
+</p>
 <%= @post.rich_body %>

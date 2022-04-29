@@ -5,6 +5,7 @@ ruby '2.7.4'
 
 gem 'devise'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem "font-awesome-sass", "~> 5.6.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
 # Use sqlite3 as the database for Active Record
