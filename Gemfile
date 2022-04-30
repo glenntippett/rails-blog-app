@@ -12,6 +12,7 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
 # gem 'sqlite3', '~> 1.4'
 gem 'simple_form', github: 'heartcombo/simple_form'
 gem 'pg'
+gem 'pundit'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets

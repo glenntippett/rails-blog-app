@@ -1,7 +1,0 @@
-<h1>User: <%= @user.username %></h1>
-
-<% @user.posts.each do |post| %>
-  <h3><%= link_to post.title, post_path(post) %></h3>
-  <p><%= post.user.username %></p>
-  <p><%= post.summary %></p>
-<% end %>

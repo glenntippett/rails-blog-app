@@ -17,12 +17,18 @@
   <% end %>
 <% end %>
 
+<hr>
+
 <%# Comments %>
 <% @post.comments.each do |comment| %>
-  <% if comment.user == current_user %>
-    <button>Edit</button>
+  <div>
+    <strong>Commented by: <%= comment.user.email %></strong>
+    <p><%= comment.content %></p>
+  </div>
+  <% if policy(comment).edit? %>
+    <%= link_to "Edit", edit_post_comment_path(@post, comment) %>
   <% end %>
-  <p><%= comment.content %></p>
+  <hr>
 <% end %>
 
 <%= @post.rich_body %>
