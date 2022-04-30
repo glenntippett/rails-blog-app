@@ -17,4 +17,12 @@
   <% end %>
 <% end %>
 
+<%# Comments %>
+<% @post.comments.each do |comment| %>
+  <% if comment.user == current_user %>
+    <button>Edit</button>
+  <% end %>
+  <p><%= comment.content %></p>
+<% end %>
+
 <%= @post.rich_body %>
