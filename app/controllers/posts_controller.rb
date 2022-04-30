@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def show
     @post = Post.find(params[:id])
   end
@@ -22,6 +21,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to profile_path
+  end
+
+  def like
+    @post = Post.find(params[:id])
+    Like.create(user: current_user, post: @post)
+    redirect_to post_path(@post)
   end
 
   private

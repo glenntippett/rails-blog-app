@@ -6,7 +6,15 @@
 <% end %>
 
 <h1><%= @post.title %></h1>
-<p>
-  Written by: <%= @post.user.email %>
-</p>
+<p>Written by: <%= @post.user.email %></p>  
+
+<%# Like button %>
+<% if user_signed_in? %>
+  <% if @post.liked?(current_user) %>
+    <%= button_to 'Like', like_path(@post), method: 'put', disabled: true %>
+  <% else %>
+    <%= button_to 'Like', like_path(@post), method: 'put' %>
+  <% end %>
+<% end %>
+
 <%= @post.rich_body %>
