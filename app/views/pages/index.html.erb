@@ -1,5 +1,4 @@
-<img src="<%= asset_path('nature.png') %>" />
-<img src="<%= asset_path('coffee.jpg') %>" />
+<%= render 'shared/carousel' %>
 
 <% @posts.each do |post| %>
   <h3><%= link_to post.title, post_path(post) %></h3>
